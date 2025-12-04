@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-/* ===== RESET & BASE ===== */
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +14,7 @@ body {
     cursor: none;
 }
 
-/* ===== CUSTOM CURSOR ===== */
+/* Cursor */
 .custom-cursor {
     position: fixed;
     width: 30px;
@@ -34,7 +33,7 @@ body {
     box-shadow: 0 0 30px #00ffff;
 }
 
-/* ===== MATRIX BACKGROUND ===== */
+/* background matrix*/
 .matrix-bg {
     position: fixed;
     top: 0;
@@ -45,7 +44,7 @@ body {
     opacity: 0.15;
 }
 
-/* ===== MAIN CONTAINER ===== */
+/* main container*/
 .glitch-container {
     position: relative;
     width: 100%;
@@ -56,7 +55,6 @@ body {
     padding: 20px;
 }
 
-/* ===== TITLE ===== */
 .main-title {
     position: absolute;
     top: 40px;
@@ -99,7 +97,6 @@ body {
     }
 }
 
-/* ===== FORM CONTAINER ===== */
 .form-container {
     background: rgba(10, 10, 30, 0.9);
     border: 3px solid #ff00ff;
@@ -120,7 +117,7 @@ body {
     50% { transform: translateY(-20px); }
 }
 
-/* ===== CORNER DECORATIONS ===== */
+/* corners*/
 .corner-decoration {
     position: absolute;
     width: 20px;
@@ -140,7 +137,7 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* ===== SECRET COUNTER ===== */
+/* found a secret */
 .secret-counter {
     position: fixed;
     top: 10px;
@@ -156,7 +153,6 @@ body {
     z-index: 100;
 }
 
-/* ===== FORM ELEMENTS ===== */
 .form-group {
     margin-bottom: 30px;
     position: relative;
@@ -223,7 +219,6 @@ select option {
     opacity: 1;
 }
 
-/* ===== SUBMIT BUTTON ===== */
 .submit-wrapper {
     position: relative;
     margin-top: 40px;
@@ -278,7 +273,7 @@ select option {
     50% { left: 100%; }
 }
 
-/* ===== KONAMI INDICATOR ===== */
+/* konami indicator*/
 .konami-indicator {
     position: fixed;
     bottom: 20px;
@@ -301,7 +296,7 @@ select option {
     50% { opacity: 1; }
 }
 
-/* ===== SUCCESS MODAL ===== */
+/* success modal */
 .modal {
     display: none;
     position: fixed;
@@ -415,16 +410,16 @@ select option {
 /* ===== FIREWORKS ===== */
 .firework {
     position: fixed;
-    width: 5px;
-    height: 5px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     pointer-events: none;
     z-index: 10001;
 }
 
-/* ===== ANIMATIONS ===== */
+/* animation */
 .shake {
-    animation: shake 0.5s ease;
+    animation: shake 1s ease;
 }
 
 @keyframes shake {
@@ -433,7 +428,7 @@ select option {
     20%, 40%, 60%, 80% { transform: translateX(10px); }
 }
 
-/* ===== EASTER EGG MESSAGE ===== */
+/* easter egg message */
 .easter-egg-message {
     position: fixed;
     top: 50%;
@@ -452,7 +447,7 @@ select option {
     box-shadow: 0 0 50px rgba(0, 255, 0, 0.8);
 }
 
-/* ===== RESPONSIVE ===== */
+/* responsive */
 @media (max-width: 768px) {
     .main-title {
         font-size: 1.2em;

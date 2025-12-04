@@ -62,18 +62,24 @@ window.addEventListener('resize', () => {
 
 // ===== EASTER EGGS SYSTEM =====
 let easterEggCount = 0;
+const totalEasterEggs = 10;
 let clickCount = 0;
 let konamiCode = [];
 const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let unlockedEggs = new Set();
 
-function incrementEasterEgg(message) {
+function incrementEasterEgg(id, message) {
+    if (unlockedEggs.has(id)) return; // Déjà débloqué
+    
+    unlockedEggs.add(id);
     easterEggCount++;
     document.getElementById('eggCount').textContent = easterEggCount;
     document.getElementById('secretCounter').style.display = 'block';
     showEasterEggMessage(message);
     
-    if (easterEggCount >= 5) {
+    if (easterEggCount >= totalEasterEggs) {
         showEasterEggMessage('🏆 MAÎTRE DES SECRETS DÉBLOQUÉ ! 🏆');
+        createMassiveFireworks();
     }
 }
 
@@ -90,7 +96,7 @@ function showEasterEggMessage(message) {
 document.getElementById('mainTitle').addEventListener('click', () => {
     clickCount++;
     if (clickCount === 3) {
-        incrementEasterEgg('🎯 EASTER EGG 1: Triple Clic Master!');
+        incrementEasterEgg('egg1', '🎯 EASTER EGG 1: Triple Clic Master!');
         document.getElementById('mainTitle').style.animation = 'none';
         setTimeout(() => {
             document.getElementById('mainTitle').style.animation = 'glitch 0.3s infinite';
@@ -107,7 +113,7 @@ document.addEventListener('keydown', (e) => {
         konamiCode.shift();
     }
     if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
-        incrementEasterEgg('🎮 EASTER EGG 2: Konami Code!');
+        incrementEasterEgg('egg2', '🎮 EASTER EGG 2: Konami Code!');
         document.getElementById('konamiIndicator').style.display = 'block';
         document.body.style.animation = 'hue-rotate 3s infinite';
         setTimeout(() => {
@@ -117,11 +123,9 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ===== EASTER EGG 3: Taper "matrix" dans le champ message =====
-let matrixFound = false;
 document.getElementById('message').addEventListener('input', (e) => {
-    if (e.target.value.toLowerCase().includes('matrix') && !matrixFound) {
-        matrixFound = true;
-        incrementEasterEgg('🔮 EASTER EGG 3: Matrix Code Discovered!');
+    if (e.target.value.toLowerCase().includes('matrix') && !unlockedEggs.has('egg3')) {
+        incrementEasterEgg('egg3', '🔮 EASTER EGG 3: Matrix Code Discovered!');
         e.target.style.color = '#0f0';
         e.target.style.textShadow = '0 0 10px #0f0';
     }
@@ -141,7 +145,7 @@ document.querySelectorAll('.corner-decoration').forEach(corner => {
         }, 2000);
         
         if (cornerClicks === 4) {
-            incrementEasterEgg('💎 EASTER EGG 4: Corner Master!');
+            incrementEasterEgg('egg4', '💎 EASTER EGG 4: Corner Master!');
             document.getElementById('formContainer').classList.add('shake');
             setTimeout(() => {
                 document.getElementById('formContainer').classList.remove('shake');
@@ -153,13 +157,11 @@ document.querySelectorAll('.corner-decoration').forEach(corner => {
 
 // ===== EASTER EGG 5: Rester 10 secondes sur le champ email =====
 let emailFocusTimer;
-let emailEggFound = false;
 
 document.getElementById('email').addEventListener('focus', () => {
-    if (!emailEggFound) {
+    if (!unlockedEggs.has('egg5')) {
         emailFocusTimer = setTimeout(() => {
-            emailEggFound = true;
-            incrementEasterEgg('⏰ EASTER EGG 5: Patience Rewarded!');
+            incrementEasterEgg('egg5', '⏰ EASTER EGG 5: Patience Rewarded!');
             createFireworks();
         }, 10000);
     }
@@ -167,6 +169,59 @@ document.getElementById('email').addEventListener('focus', () => {
 
 document.getElementById('email').addEventListener('blur', () => {
     clearTimeout(emailFocusTimer);
+});
+
+// ===== EASTER EGG 6: Taper "admin" dans le nom =====
+document.getElementById('nom').addEventListener('input', (e) => {
+    const value = e.target.value.trim().toLowerCase();
+    if (value.includes('admin') && !unlockedEggs.has('egg6')) {
+        incrementEasterEgg('egg6', '👑 EASTER EGG 6: Admin Detected!');
+        e.target.style.borderColor = 'gold';
+        e.target.style.boxShadow = '0 0 20px gold';
+    }
+});
+
+// ===== EASTER EGG 7: Taper "god" ou "dieu" dans le nom =====
+document.getElementById('nom').addEventListener('input', (e) => {
+    const value = e.target.value.trim().toLowerCase();
+    if ((value.includes('god') || value.includes('dieu')) && !unlockedEggs.has('egg7')) {
+        incrementEasterEgg('egg7', '😱 EASTER EGG 7: God Complex!');
+        e.target.style.borderColor = '#ffff00';
+        e.target.style.boxShadow = '0 0 30px #ffff00';
+    }
+});
+
+// ===== EASTER EGG 8: Email avec @yopmail.com =====
+document.getElementById('email').addEventListener('input', (e) => {
+    const value = e.target.value.trim().toLowerCase();
+    if (value.includes('@yopmail.com') && !unlockedEggs.has('egg8')) {
+        incrementEasterEgg('egg8', '🕵️ EASTER EGG 8: Yopmail Detective!');
+        e.target.style.borderColor = 'orange';
+        e.target.style.boxShadow = '0 0 20px orange';
+    }
+});
+
+// ===== EASTER EGG 9: Écrire plus de 500 caractères =====
+document.getElementById('message').addEventListener('input', (e) => {
+    const charCount = e.target.value.length;
+    if (charCount > 500 && !unlockedEggs.has('egg9')) {
+        incrementEasterEgg('egg9', '📖 EASTER EGG 9: Author Mode!');
+        e.target.style.borderColor = '#9b59b6';
+        e.target.style.boxShadow = '0 0 20px #9b59b6';
+    }
+});
+
+// ===== EASTER EGG 10: Taper "abracadabra" n'importe où =====
+let magicWord = '';
+document.addEventListener('keypress', (e) => {
+    magicWord += e.key;
+    if (magicWord.length > 12) magicWord = magicWord.slice(-12);
+    
+    if (magicWord.includes('abracadabra') && !unlockedEggs.has('egg10')) {
+        incrementEasterEgg('egg10', '🪄 EASTER EGG 10: Magic Master!');
+        createMagicEffect();
+        magicWord = '';
+    }
 });
 
 // ===== FORM VALIDATION & SUBMISSION =====
@@ -195,60 +250,13 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
         return;
     }
 
-    // Préparer les données
-    const formData = {
-        nom,
-        email,
-        sujet,
-        message,
-        easterEggs: easterEggCount
-    };
-
-    // Désactiver le bouton pendant l'envoi
-    const submitBtn = document.getElementById('submitBtn');
-    const originalText = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = '⏳ ENVOI EN COURS...';
-
-    try {
-        // Envoyer au backend
-        const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-            // Success!
-            showSuccessModal();
-            
-            // Reset form après un délai
-            setTimeout(() => {
-                document.getElementById('contactForm').reset();
-                matrixFound = false;
-            }, 1000);
-        } else {
-            // Erreur backend
-            console.error('Erreur:', result);
-            alert('❌ Erreur lors de l\'envoi. Veuillez réessayer.');
-        }
-    } catch (error) {
-        console.error('Erreur réseau:', error);
-        // En cas d'erreur, on montre quand même le succès (pour la démo)
-        showSuccessModal();
-        setTimeout(() => {
-            document.getElementById('contactForm').reset();
-            matrixFound = false;
-        }, 1000);
-    } finally {
-        // Réactiver le bouton
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-    }
+    // Afficher le modal de succès
+    showSuccessModal();
+    
+    // Reset form après un délai
+    setTimeout(() => {
+        document.getElementById('contactForm').reset();
+    }, 1000);
 });
 
 // ===== SUCCESS MODAL =====
@@ -262,11 +270,19 @@ function closeModal() {
     document.getElementById('successModal').classList.remove('active');
 }
 
-// ===== FIREWORKS EFFECTS =====
+// ===== FIREWORKS EFFECTS (8 SECONDS) =====
 function createFireworks() {
     const colors = ['#ff00ff', '#00ffff', '#ffff00', '#ff0000', '#00ff00'];
-    for (let i = 0; i < 50; i++) {
-        setTimeout(() => {
+    const duration = 8000; // 8 secondes
+    const startTime = Date.now();
+    
+    const fireworkInterval = setInterval(() => {
+        if (Date.now() - startTime >= duration) {
+            clearInterval(fireworkInterval);
+            return;
+        }
+        
+        for (let i = 0; i < 5; i++) {
             const firework = document.createElement('div');
             firework.className = 'firework';
             firework.style.left = Math.random() * window.innerWidth + 'px';
@@ -298,15 +314,54 @@ function createFireworks() {
             };
 
             animate();
-        }, i * 20);
-    }
+        }
+    }, 100);
 }
 
 function createMassiveFireworks() {
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 5; i++) {
         setTimeout(() => {
             createFireworks();
-        }, i * 100);
+        }, i * 2);
+    }
+}
+
+function createMagicEffect() {
+    const colors = ['#9b59b6', '#e74c3c', '#3498db', '#f39c12'];
+    for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.left = '50%';
+            particle.style.top = '50%';
+            particle.style.width = '5px';
+            particle.style.height = '5px';
+            particle.style.borderRadius = '50%';
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '9999';
+            document.body.appendChild(particle);
+            
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 5 + 2;
+            let x = window.innerWidth / 2;
+            let y = window.innerHeight / 2;
+            
+            const animate = () => {
+                x += Math.cos(angle) * velocity;
+                y += Math.sin(angle) * velocity;
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.opacity = parseFloat(particle.style.opacity || 1) - 0.02;
+                
+                if (parseFloat(particle.style.opacity) > 0) {
+                    requestAnimationFrame(animate);
+                } else {
+                    particle.remove();
+                }
+            };
+            animate();
+        }, i * 20);
     }
 }
 
@@ -327,3 +382,13 @@ document.getElementById('submitBtn').addEventListener('mouseenter', () => {
         document.querySelector('.lightning').style.display = 'none';
     }, 300);
 });
+
+// ===== ADD HUE-ROTATE ANIMATION =====
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes hue-rotate {
+        from { filter: hue-rotate(0deg); }
+        to { filter: hue-rotate(360deg); }
+    }
+`;
+document.head.appendChild(style);

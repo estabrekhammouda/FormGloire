@@ -3,117 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form Ultime 🎰</title>
+    <title>🎪 LE FORMULAIRE QUI VIT 🎪</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- CUSTOM CURSOR -->
     <div class="custom-cursor"></div>
-    <canvas class="matrix-bg" id="matrix"></canvas>
-    
+
+    <!-- MATRIX BACKGROUND -->
+    <canvas id="matrix" class="matrix-bg"></canvas>
+
+    <!-- SECRET COUNTER -->
     <div class="secret-counter" id="secretCounter">
-        🎮 Easter Eggs: <span id="eggCount">0</span>/5
+        🥚 SECRETS: <span id="eggCount">0</span>/5
     </div>
 
-    <div class="glitch-container">
-        <h1 class="main-title" id="mainTitle">⚡ CONTACT MATRIX ⚡</h1>
+    <!-- KONAMI INDICATOR -->
+    <div class="konami-indicator" id="konamiIndicator">
+        🎮 KONAMI CODE ACTIVATED! 🎮
+    </div>
 
+    <!-- EASTER EGG MESSAGE -->
+    <div class="easter-egg-message" id="easterEggMsg"></div>
+
+    <!-- GLITCH CONTAINER -->
+    <div class="glitch-container">
+        <!-- MAIN TITLE -->
+        <h1 class="main-title" id="mainTitle">
+            🎪 FORMULAIRE VIVANT 🎪
+        </h1>
+
+        <!-- FORM CONTAINER -->
         <div class="form-container" id="formContainer">
+            <!-- CORNER DECORATIONS -->
             <div class="corner-decoration tl"></div>
             <div class="corner-decoration tr"></div>
             <div class="corner-decoration bl"></div>
             <div class="corner-decoration br"></div>
 
+            <!-- CONTACT FORM -->
             <form id="contactForm">
+                <!-- NOM -->
                 <div class="form-group">
-                    <label for="nom">👤 NOM D'AGENT</label>
+                    <label for="nom">👤 NOM COMPLET</label>
                     <div class="input-wrapper">
                         <input 
                             type="text" 
                             id="nom" 
                             name="nom" 
-                            placeholder="Neo, Trinity, Morpheus..." 
+                            placeholder="Entrez votre nom..."
                             required
-                            autocomplete="off"
                         >
-                        <div class="typing-effect">▸ Saisie détectée...</div>
+                        <div class="typing-effect">▮ Saisie en cours...</div>
                     </div>
                 </div>
 
+                <!-- EMAIL -->
                 <div class="form-group">
-                    <label for="email">📡 FRÉQUENCE EMAIL</label>
+                    <label for="email">📧 EMAIL</label>
                     <div class="input-wrapper">
                         <input 
                             type="email" 
                             id="email" 
                             name="email" 
-                            placeholder="agent@matrix.net" 
+                            placeholder="votre@email.com"
                             required
-                            autocomplete="off"
                         >
-                        <div class="typing-effect">▸ Signal capté...</div>
+                        <div class="typing-effect">▮ Vérification...</div>
                     </div>
                 </div>
 
+                <!-- SUJET -->
                 <div class="form-group">
-                    <label for="sujet">🎯 CODE MISSION</label>
+                    <label for="sujet">🎯 SUJET</label>
                     <div class="input-wrapper">
                         <select id="sujet" name="sujet" required>
-                            <option value="">Sélectionner protocole...</option>
-                            <option value="bug">🐛 Bug dans la Matrice</option>
-                            <option value="collaboration">🤝 Alliance Rebelle</option>
-                            <option value="question">❓ Question Existentielle</option>
-                            <option value="recrutement">🎖️ Demande de Recrutement</option>
-                            <option value="pilule">💊 Pilule Rouge/Bleue</option>
-                            <option value="autre">🌀 Anomalie Temporelle</option>
+                            <option value="">-- Sélectionnez un sujet --</option>
+                            <option value="bug">🐛 Bug Report</option>
+                            <option value="collab">🤝 Collaboration</option>
+                            <option value="question">❓ Question</option>
+                            <option value="feedback">💬 Feedback</option>
+                            <option value="autre">🔮 Autre</option>
                         </select>
-                        <div class="typing-effect">▸ Protocole sélectionné...</div>
                     </div>
                 </div>
 
+                <!-- MESSAGE -->
                 <div class="form-group">
-                    <label for="message">💬 MESSAGE CRYPTÉ</label>
+                    <label for="message">💬 MESSAGE</label>
                     <div class="input-wrapper">
                         <textarea 
                             id="message" 
                             name="message" 
-                            placeholder="Décodez votre message ici... La vérité vous attend..."
+                            placeholder="Écrivez votre message..."
                             required
+                            rows="6"
                         ></textarea>
-                        <div class="typing-effect">▸ Transmission en cours...</div>
+                        <div class="typing-effect">▮ En cours d'écriture...</div>
                     </div>
                 </div>
 
+                <!-- SUBMIT BUTTON -->
                 <div class="submit-wrapper">
                     <button type="submit" class="submit-btn" id="submitBtn">
-                        🚀 ENVOYER DANS LA MATRICE 🚀
+                        🚀 ENVOYER LE MESSAGE
+                        <div class="lightning"></div>
                     </button>
-                    <div class="lightning"></div>
                 </div>
             </form>
         </div>
     </div>
 
-    <div class="konami-indicator" id="konamiIndicator">
-        🎮 MODE TRICHE ACTIVÉ 🎮
-    </div>
-
-    <div class="easter-egg-message" id="easterEggMsg"></div>
-
+    <!-- SUCCESS MODAL -->
     <div class="modal" id="successModal">
         <div class="modal-content">
-            <div class="success-icon">🎰🏆🎉</div>
-            <h2 class="success-title">JACKPOT!</h2>
-            <p class="success-message">
-                <strong>FÉLICITATIONS, VOUS AVEZ GAGNÉ ! 🎊</strong><br><br>
-                Votre message a traversé la matrice avec succès !<br>
-                <em>Points bonus: +9999 XP</em><br><br>
-                La prophétie s'accomplit... 🔮<br>
-                Nous vous répondrons plus vite que la vitesse de la lumière ! ⚡
-            </p>
-            <button class="close-btn" onclick="closeModal()">LEGENDARY</button>
+            <div class="success-icon">🎉</div>
+            <h2 class="success-title">SUCCÈS!</h2>
+            <div class="success-message">
+                <p>Votre message a été envoyé avec succès!</p>
+                <p>Nous vous répondrons dans les plus brefs délais.</p>
+            </div>
+            <button class="close-btn" onclick="closeModal()">
+                ✨ FERMER ✨
+            </button>
         </div>
     </div>
 
+    <!-- SCRIPT -->
     <script src="script.js"></script>
 </body>
 </html>
