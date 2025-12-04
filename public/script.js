@@ -96,7 +96,7 @@ function showEasterEggMessage(message) {
 document.getElementById('mainTitle').addEventListener('click', () => {
     clickCount++;
     if (clickCount === 2) {
-        incrementEasterEgg('egg1', '🎯 EASTER EGG 1: Double Clic Master!');
+        incrementEasterEgg('egg1', '🎯 EASTER EGG 1 : Maître du Double-Clic !');
         document.getElementById('mainTitle').style.animation = 'none';
         setTimeout(() => {
             document.getElementById('mainTitle').style.animation = 'glitch 1s infinite';
@@ -113,7 +113,7 @@ document.addEventListener('keydown', (e) => {
         konamiCode.shift();
     }
     if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
-        incrementEasterEgg('egg2', '🎮 EASTER EGG 2: Konami Code!');
+        incrementEasterEgg('egg2', '🎮 EASTER EGG 2: Code Konami!');
         document.getElementById('konamiIndicator').style.display = 'block';
         document.body.style.animation = 'hue-rotate 3s infinite';
         setTimeout(() => {
@@ -121,11 +121,11 @@ document.addEventListener('keydown', (e) => {
         }, 5000);
     }
 });
-
+        
 // ===== EASTER EGG 3: Taper "matrix" dans le champ message =====
 document.getElementById('message').addEventListener('input', (e) => {
     if (e.target.value.toLowerCase().includes('matrix') && !unlockedEggs.has('egg3')) {
-        incrementEasterEgg('egg3', '🔮 EASTER EGG 3: Matrix Code Discovered!');
+        incrementEasterEgg('egg3', '🔮 EASTER EGG 3: Code Matrix Découvert !');
         e.target.style.color = '#0f0';
         e.target.style.textShadow = '0 0 10px #0f0';
     }
@@ -145,7 +145,7 @@ document.querySelectorAll('.corner-decoration').forEach(corner => {
         }, 2000);
         
         if (cornerClicks === 4) {
-            incrementEasterEgg('egg4', '💎 EASTER EGG 4: Corner Master!');
+            incrementEasterEgg('egg4', '💎 EASTER EGG 4 : Maître des Coins !');
             document.getElementById('formContainer').classList.add('shake');
             setTimeout(() => {
                 document.getElementById('formContainer').classList.remove('shake');
@@ -161,7 +161,7 @@ let emailFocusTimer;
 document.getElementById('email').addEventListener('focus', () => {
     if (!unlockedEggs.has('egg5')) {
         emailFocusTimer = setTimeout(() => {
-            incrementEasterEgg('egg5', '⏰ EASTER EGG 5: Patience Rewarded!');
+            incrementEasterEgg('egg5', '⏰ EASTER EGG 5 : Patience Récompensée !');
             createFireworks();
         }, 10000);
     }
@@ -175,7 +175,7 @@ document.getElementById('email').addEventListener('blur', () => {
 document.getElementById('nom').addEventListener('input', (e) => {
     const value = e.target.value.trim().toLowerCase();
     if (value.includes('admin') && !unlockedEggs.has('egg6')) {
-        incrementEasterEgg('egg6', '👑 EASTER EGG 6: Admin Detected!');
+        incrementEasterEgg('egg6', '👑 EASTER EGG 6 : Admin étecté !');
         e.target.style.borderColor = 'gold';
         e.target.style.boxShadow = '0 0 20px gold';
     }
@@ -185,7 +185,7 @@ document.getElementById('nom').addEventListener('input', (e) => {
 document.getElementById('nom').addEventListener('input', (e) => {
     const value = e.target.value.trim().toLowerCase();
     if ((value.includes('god') || value.includes('dieu')) && !unlockedEggs.has('egg7')) {
-        incrementEasterEgg('egg7', '😱 EASTER EGG 7: God Complex!');
+        incrementEasterEgg('egg7', '😱 EASTER EGG 7 : Complexe de Dieu !');
         e.target.style.borderColor = '#ffff00';
         e.target.style.boxShadow = '0 0 30px #ffff00';
     }
@@ -195,7 +195,7 @@ document.getElementById('nom').addEventListener('input', (e) => {
 document.getElementById('email').addEventListener('input', (e) => {
     const value = e.target.value.trim().toLowerCase();
     if (value.includes('@yopmail.com') && !unlockedEggs.has('egg8')) {
-        incrementEasterEgg('egg8', '🕵️ EASTER EGG 8: Yopmail Detective!');
+        incrementEasterEgg('egg8', '🕵️ EASTER EGG 8 : Détective Yopmail !');
         e.target.style.borderColor = 'orange';
         e.target.style.boxShadow = '0 0 20px orange';
     }
@@ -205,7 +205,7 @@ document.getElementById('email').addEventListener('input', (e) => {
 document.getElementById('message').addEventListener('input', (e) => {
     const charCount = e.target.value.length;
     if (charCount > 100 && !unlockedEggs.has('egg9')) {
-        incrementEasterEgg('egg9', '📖 EASTER EGG 9: Author Mode!');
+        incrementEasterEgg('egg9', '📖 EASTER EGG 9 : Mode Auteur !');
         e.target.style.borderColor = '#9b59b6';
         e.target.style.boxShadow = '0 0 20px #9b59b6';
     }
@@ -218,7 +218,7 @@ document.addEventListener('keypress', (e) => {
     if (magicWord.length > 12) magicWord = magicWord.slice(-12);
     
     if (magicWord.includes('abracadabra') && !unlockedEggs.has('egg10')) {
-        incrementEasterEgg('egg10', '🪄 EASTER EGG 10: Magic Master!');
+        incrementEasterEgg('egg10', '🪄 EASTER EGG 10 : Maître de la Magie !');
         createMagicEffect();
         magicWord = '';
     }
