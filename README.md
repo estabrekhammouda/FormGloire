@@ -19,12 +19,12 @@ Effets visuels et animations réactives
   
 🎮 Les 10 Easter Eggs 
 
-🎯 Easter Egg 1 : Triple Clic Master
-Comment débloquer : Cliquez 3 fois rapidement sur le titre "🎪 FORMULAIRE VIVANT 🎪"
+🎯 Easter Egg 1 : Double Clic Master
+Comment débloquer : Cliquez 2 fois rapidement sur le titre "🎪 FORMULAIRE VIVANT 🎪"
 Effet : Le titre passe en mode glitch ultra-rapide
 
 🎮 Easter Egg 2 : Konami Code
-Comment débloquer : Tapez la séquence : ↑ ↑ ↓ ↓ ← → ← → B A
+Comment débloquer : Tapez la séquence : ↑ ↑ ↓ ↓ ← → ← → b a 
 Effet : Active le mode "hue-rotate" - l'écran change de couleur en continu
 
 🔮 Easter Egg 3 : Matrix Code
@@ -52,7 +52,7 @@ Comment débloquer : Utilisez une adresse email avec @yopmail.com
 Effet : Bordure orange avec effet lumineux
 
 📖 Easter Egg 9 : Author Mode
-Comment débloquer : Écrivez plus de 500 caractères dans le message
+Comment débloquer : Écrivez plus de 100 caractères dans le message
 Effet : Bordure violette avec effet glow
 
 🪄 Easter Egg 10 : Magic Master
