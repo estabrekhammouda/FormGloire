@@ -92,11 +92,11 @@ function showEasterEggMessage(message) {
     }, 2000);
 }
 
-// ===== EASTER EGG 1: Triple clic sur le titre =====
+// ===== EASTER EGG 1: Double clic sur le titre =====
 document.getElementById('mainTitle').addEventListener('click', () => {
     clickCount++;
-    if (clickCount === 3) {
-        incrementEasterEgg('egg1', '🎯 EASTER EGG 1: Triple Clic Master!');
+    if (clickCount === 2) {
+        incrementEasterEgg('egg1', '🎯 EASTER EGG 1: Double Clic Master!');
         document.getElementById('mainTitle').style.animation = 'none';
         setTimeout(() => {
             document.getElementById('mainTitle').style.animation = 'glitch 0.3s infinite';
@@ -201,10 +201,10 @@ document.getElementById('email').addEventListener('input', (e) => {
     }
 });
 
-// ===== EASTER EGG 9: Écrire plus de 500 caractères =====
+// ===== EASTER EGG 9: Écrire plus de 100 caractères =====
 document.getElementById('message').addEventListener('input', (e) => {
     const charCount = e.target.value.length;
-    if (charCount > 500 && !unlockedEggs.has('egg9')) {
+    if (charCount > 100 && !unlockedEggs.has('egg9')) {
         incrementEasterEgg('egg9', '📖 EASTER EGG 9: Author Mode!');
         e.target.style.borderColor = '#9b59b6';
         e.target.style.boxShadow = '0 0 20px #9b59b6';
@@ -273,7 +273,7 @@ function closeModal() {
 // ===== FIREWORKS EFFECTS (8 SECONDS) =====
 function createFireworks() {
     const colors = ['#ff00ff', '#00ffff', '#ffff00', '#ff0000', '#00ff00'];
-    const duration = 8000; // 8 secondes
+    const duration = 8000; 
     const startTime = Date.now();
     
     const fireworkInterval = setInterval(() => {
