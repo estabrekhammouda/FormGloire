@@ -69,7 +69,7 @@ const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLe
 let unlockedEggs = new Set();
 
 function incrementEasterEgg(id, message) {
-    if (unlockedEggs.has(id)) return; // Déjà débloqué
+    if (unlockedEggs.has(id)) return;   
     
     unlockedEggs.add(id);
     easterEggCount++;
@@ -99,7 +99,7 @@ document.getElementById('mainTitle').addEventListener('click', () => {
         incrementEasterEgg('egg1', '🎯 EASTER EGG 1: Double Clic Master!');
         document.getElementById('mainTitle').style.animation = 'none';
         setTimeout(() => {
-            document.getElementById('mainTitle').style.animation = 'glitch 0.3s infinite';
+            document.getElementById('mainTitle').style.animation = 'glitch 1s infinite';
         }, 10);
         clickCount = 0;
     }
