@@ -15,5 +15,8 @@
     "cors": "^2.8.5",
     "express": "^5.2.1",
     "nodemailer": "^7.0.11"
+  },
+  "devDependencies": {
+    "vercel": "^48.12.1"
   }
 }
