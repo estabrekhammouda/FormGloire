@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form Ultime 🎰</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="custom-cursor"></div>
+    <canvas class="matrix-bg" id="matrix"></canvas>
+    
+    <div class="secret-counter" id="secretCounter">
+        🎮 Easter Eggs: <span id="eggCount">0</span>/5
+    </div>
+
+    <div class="glitch-container">
+        <h1 class="main-title" id="mainTitle">⚡ CONTACT MATRIX ⚡</h1>
+
+        <div class="form-container" id="formContainer">
+            <div class="corner-decoration tl"></div>
+            <div class="corner-decoration tr"></div>
+            <div class="corner-decoration bl"></div>
+            <div class="corner-decoration br"></div>
+
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="nom">👤 NOM D'AGENT</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="nom" 
+                            name="nom" 
+                            placeholder="Neo, Trinity, Morpheus..." 
+                            required
+                            autocomplete="off"
+                        >
+                        <div class="typing-effect">▸ Saisie détectée...</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">📡 FRÉQUENCE EMAIL</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="agent@matrix.net" 
+                            required
+                            autocomplete="off"
+                        >
+                        <div class="typing-effect">▸ Signal capté...</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="sujet">🎯 CODE MISSION</label>
+                    <div class="input-wrapper">
+                        <select id="sujet" name="sujet" required>
+                            <option value="">Sélectionner protocole...</option>
+                            <option value="bug">🐛 Bug dans la Matrice</option>
+                            <option value="collaboration">🤝 Alliance Rebelle</option>
+                            <option value="question">❓ Question Existentielle</option>
+                            <option value="recrutement">🎖️ Demande de Recrutement</option>
+                            <option value="pilule">💊 Pilule Rouge/Bleue</option>
+                            <option value="autre">🌀 Anomalie Temporelle</option>
+                        </select>
+                        <div class="typing-effect">▸ Protocole sélectionné...</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">💬 MESSAGE CRYPTÉ</label>
+                    <div class="input-wrapper">
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            placeholder="Décodez votre message ici... La vérité vous attend..."
+                            required
+                        ></textarea>
+                        <div class="typing-effect">▸ Transmission en cours...</div>
+                    </div>
+                </div>
+
+                <div class="submit-wrapper">
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        🚀 ENVOYER DANS LA MATRICE 🚀
+                    </button>
+                    <div class="lightning"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="konami-indicator" id="konamiIndicator">
+        🎮 MODE TRICHE ACTIVÉ 🎮
+    </div>
+
+    <div class="easter-egg-message" id="easterEggMsg"></div>
+
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">🎰🏆🎉</div>
+            <h2 class="success-title">JACKPOT!</h2>
+            <p class="success-message">
+                <strong>FÉLICITATIONS, VOUS AVEZ GAGNÉ ! 🎊</strong><br><br>
+                Votre message a traversé la matrice avec succès !<br>
+                <em>Points bonus: +9999 XP</em><br><br>
+                La prophétie s'accomplit... 🔮<br>
+                Nous vous répondrons plus vite que la vitesse de la lumière ! ⚡
+            </p>
+            <button class="close-btn" onclick="closeModal()">LEGENDARY</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

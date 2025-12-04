@@ -1,0 +1,485 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #000;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* ===== CUSTOM CURSOR ===== */
+.custom-cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ff00ff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.1s, border-color 0.3s;
+    box-shadow: 0 0 20px #ff00ff;
+}
+
+.custom-cursor.clicked {
+    transform: scale(0.8);
+    border-color: #00ffff;
+    box-shadow: 0 0 30px #00ffff;
+}
+
+/* ===== MATRIX BACKGROUND ===== */
+.matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.15;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.glitch-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ===== TITLE ===== */
+.main-title {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+    animation: glitch 3s infinite;
+    text-shadow: 
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff,
+        0 0 30px #ff00ff;
+    cursor: pointer;
+}
+
+@keyframes glitch {
+    0%, 100% { 
+        transform: translateX(-50%);
+        text-shadow: 
+            0 0 10px #ff00ff,
+            0 0 20px #ff00ff,
+            0 0 30px #ff00ff;
+    }
+    25% { 
+        transform: translateX(-48%);
+        text-shadow: 
+            -5px 0 #ff00ff,
+            5px 0 #00ffff;
+    }
+    50% { 
+        transform: translateX(-52%);
+        text-shadow: 
+            5px 0 #ff00ff,
+            -5px 0 #00ffff;
+    }
+    75% { 
+        transform: translateX(-50%) skew(2deg);
+    }
+}
+
+/* ===== FORM CONTAINER ===== */
+.form-container {
+    background: rgba(10, 10, 30, 0.9);
+    border: 3px solid #ff00ff;
+    border-radius: 20px;
+    padding: 50px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 
+        0 0 50px rgba(255, 0, 255, 0.5),
+        inset 0 0 30px rgba(255, 0, 255, 0.1);
+    position: relative;
+    margin-top: 100px;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* ===== CORNER DECORATIONS ===== */
+.corner-decoration {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #00ffff;
+    animation: rotate 4s linear infinite;
+    cursor: pointer;
+}
+
+.corner-decoration.tl { top: -10px; left: -10px; }
+.corner-decoration.tr { top: -10px; right: -10px; }
+.corner-decoration.bl { bottom: -10px; left: -10px; }
+.corner-decoration.br { bottom: -10px; right: -10px; }
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ===== SECRET COUNTER ===== */
+.secret-counter {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 0, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7em;
+    border: 2px solid #ff00ff;
+    display: none;
+    z-index: 100;
+}
+
+/* ===== FORM ELEMENTS ===== */
+.form-group {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    color: #00ffff;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9em;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #ff00ff;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #00ffff;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.5),
+        inset 0 0 10px rgba(0, 255, 255, 0.2);
+    transform: scale(1.02);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+select option {
+    background: #000;
+    color: #fff;
+}
+
+.typing-effect {
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    color: #00ff00;
+    font-size: 0.8em;
+    font-family: 'Courier New', monospace;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.input-wrapper:focus-within .typing-effect {
+    opacity: 1;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.submit-wrapper {
+    position: relative;
+    margin-top: 40px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
+    background-size: 200% 200%;
+    border: none;
+    border-radius: 50px;
+    color: #000;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    animation: gradient 3s ease infinite;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.submit-btn:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 10px 50px rgba(255, 0, 255, 0.8);
+}
+
+.submit-btn:active {
+    transform: scale(0.95);
+}
+
+.lightning {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, #fff, transparent);
+    animation: lightning 0.1s infinite;
+    display: none;
+}
+
+@keyframes lightning {
+    0%, 100% { left: 0%; }
+    50% { left: 100%; }
+}
+
+/* ===== KONAMI INDICATOR ===== */
+.konami-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 255, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #0f0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7em;
+    border: 2px solid #0f0;
+    display: none;
+    animation: pulse 1s infinite;
+    z-index: 100;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* ===== SUCCESS MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 60px;
+    border-radius: 30px;
+    text-align: center;
+    max-width: 600px;
+    position: relative;
+    border: 5px solid #fff;
+    box-shadow: 
+        0 0 100px rgba(255, 0, 255, 0.8),
+        inset 0 0 50px rgba(255, 255, 255, 0.2);
+    animation: modalIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes modalIn {
+    0% {
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.success-icon {
+    font-size: 100px;
+    animation: bounce 1s ease infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.1); }
+}
+
+.success-title {
+    font-size: 3em;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    margin-bottom: 20px;
+    text-shadow: 
+        3px 3px 0 #ff00ff,
+        -3px -3px 0 #00ffff;
+    animation: titleGlitch 2s infinite;
+}
+
+@keyframes titleGlitch {
+    0%, 100% { 
+        text-shadow: 
+            3px 3px 0 #ff00ff,
+            -3px -3px 0 #00ffff;
+    }
+    50% { 
+        text-shadow: 
+            -3px -3px 0 #ff00ff,
+            3px 3px 0 #00ffff;
+    }
+}
+
+.success-message {
+    font-size: 1.3em;
+    color: #fff;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.close-btn {
+    padding: 15px 40px;
+    background: #000;
+    color: #fff;
+    border: 3px solid #fff;
+    border-radius: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Press Start 2P', cursive;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: #fff;
+    color: #000;
+    transform: scale(1.1);
+    box-shadow: 0 0 30px #fff;
+}
+
+/* ===== FIREWORKS ===== */
+.firework {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10001;
+}
+
+/* ===== ANIMATIONS ===== */
+.shake {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+/* ===== EASTER EGG MESSAGE ===== */
+.easter-egg-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 255, 0, 0.9);
+    padding: 30px;
+    border-radius: 20px;
+    color: #000;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.2em;
+    z-index: 10000;
+    display: none;
+    text-align: center;
+    border: 5px solid #000;
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.8);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 1.2em;
+        top: 20px;
+    }
+    
+    .form-container {
+        padding: 30px 20px;
+        margin-top: 80px;
+    }
+
+    .modal-content {
+        padding: 40px 20px;
+        margin: 20px;
+    }
+
+    .success-title {
+        font-size: 1.8em;
+    }
+
+    .secret-counter {
+        font-size: 0.6em;
+        padding: 8px 15px;
+    }
+    
+    .submit-btn {
+        font-size: 1em;
+        padding: 15px;
+    }
+}
