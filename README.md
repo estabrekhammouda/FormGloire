@@ -13,7 +13,7 @@ Fonctionnalités
 
 Validation de formulaire en temps réel
 Modal de succès animée après soumission
-Feux d'artifice de 8 secondes lors de la soumission
+Feux d'artifice de 8 secondes lors dela soumission
 10 Easter Eggs cachés à découvrir
 Compteur de secrets en haut à droite (0/10)
 Effets visuels et animations réactives
