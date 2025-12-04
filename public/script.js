@@ -175,7 +175,7 @@ document.getElementById('email').addEventListener('blur', () => {
 document.getElementById('nom').addEventListener('input', (e) => {
     const value = e.target.value.trim().toLowerCase();
     if (value.includes('admin') && !unlockedEggs.has('egg6')) {
-        incrementEasterEgg('egg6', '👑 EASTER EGG 6 : Admin étecté !');
+        incrementEasterEgg('egg6', '👑 EASTER EGG 6 : Admin détecté !');
         e.target.style.borderColor = 'gold';
         e.target.style.boxShadow = '0 0 20px gold';
     }
